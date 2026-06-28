@@ -1,0 +1,198 @@
+
+:root {
+    --bg: #e0e5ec;
+    --sh-d: #a3b1c6;
+    --sh-l: #ffffff;
+    --text: #2b3a55;
+    --sub:  #6b7fa3;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+    background: var(--bg);
+    font-family: 'Nunito', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 22px 12px 28px;
+    gap: 18px;
+}
+
+/* ── Neumorphic helpers ── */
+.neu      { background:var(--bg); border-radius:20px; box-shadow:8px 8px 16px var(--sh-d),-8px -8px 16px var(--sh-l); }
+.neu-sm   { background:var(--bg); border-radius:14px; box-shadow:5px 5px 10px var(--sh-d),-5px -5px 10px var(--sh-l); }
+.neu-in   { box-shadow:inset 4px 4px 8px var(--sh-d),inset -4px -4px 8px var(--sh-l); border-radius:12px; }
+
+/* ── Title ── */
+h1 {
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: var(--text);
+    letter-spacing: -0.5px;
+    display:flex; align-items:center; gap:10px;
+}
+h1 span { font-size:2rem; }
+
+/* ── Layout ── */
+.game-area {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+.side-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    width: 165px;
+}
+
+/* ── Player card ── */
+.pcard {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 9px 12px;
+    border-radius: 14px;
+    background: var(--bg);
+    box-shadow: 5px 5px 10px var(--sh-d),-5px -5px 10px var(--sh-l);
+    transition: box-shadow .3s, transform .2s;
+    position: relative;
+    overflow: hidden;
+}
+.pcard::before {
+    content:'';
+    position:absolute;
+    left:0; top:0; bottom:0;
+    width:4px;
+    border-radius:14px 0 0 14px;
+    background: var(--c, #ccc);
+    opacity: 0.8;
+}
+.pcard.active {
+    box-shadow: inset 3px 3px 7px var(--sh-d), inset -3px -3px 7px var(--sh-l);
+    transform: scale(0.98);
+}
+.pcard.winner-card {
+    animation: glow 1s ease-in-out infinite alternate;
+}
+@keyframes glow {
+    from { box-shadow: 5px 5px 10px var(--sh-d),-5px -5px 10px var(--sh-l), 0 0 0 0 var(--c); }
+    to   { box-shadow: 5px 5px 10px var(--sh-d),-5px -5px 10px var(--sh-l), 0 0 12px 4px var(--c); }
+}
+.pdot {
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: var(--c, #ccc);
+    box-shadow: 2px 2px 5px var(--sh-d),-1px -1px 3px var(--sh-l);
+    flex-shrink: 0;
+}
+.pinfo { flex:1; min-width:0; }
+.pname { font-size:.78rem; font-weight:800; color:var(--text); white-space:nowrap; }
+.ptokens { font-size:.65rem; color:var(--sub); font-weight:600; margin-top:1px; }
+.pscore {
+    font-size:1.05rem; font-weight:900;
+    color: var(--c, #ccc);
+    flex-shrink:0;
+}
+
+/* ── Canvas ── */
+#board {
+    border-radius: 50%;
+    box-shadow: 14px 14px 28px var(--sh-d),-14px -14px 28px var(--sh-l);
+    cursor: pointer;
+    display: block;
+}
+
+/* ── Controls ── */
+.controls {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    padding: 20px 36px;
+    border-radius: 22px;
+    background: var(--bg);
+    box-shadow: 8px 8px 16px var(--sh-d),-8px -8px 16px var(--sh-l);
+}
+.turn-blk { min-width:150px; text-align:center; }
+.turn-lbl { font-size:.7rem; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; color:var(--sub); }
+.turn-name { font-size:1.25rem; font-weight:900; color:var(--text); transition:color .3s; }
+
+.dice-area { display:flex; align-items:center; gap:16px; }
+.dice {
+    width:70px; height:70px;
+    border-radius:18px;
+    background:var(--bg);
+    box-shadow:6px 6px 12px var(--sh-d),-6px -6px 12px var(--sh-l);
+    display:flex; align-items:center; justify-content:center;
+    font-size:2.8rem;
+    user-select:none;
+    transition:transform .1s;
+}
+.dice.rolling { animation: droll .55s ease-out; }
+@keyframes droll {
+    0%  { transform:rotate(0)   scale(1); }
+    20% { transform:rotate(-22deg) scale(1.15); }
+    45% { transform:rotate(16deg) scale(.94); }
+    65% { transform:rotate(-10deg) scale(1.07); }
+    85% { transform:rotate(6deg) scale(.98); }
+    100%{ transform:rotate(0) scale(1); }
+}
+
+.roll-btn {
+    padding: 14px 30px;
+    font-size: .95rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: #fff;
+    background: linear-gradient(135deg,#667eea,#764ba2);
+    border-radius: 14px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 6px 6px 12px var(--sh-d),-4px -4px 8px var(--sh-l), 0 4px 18px rgba(102,126,234,.4);
+    font-family: 'Nunito', sans-serif;
+    transition: all .2s;
+    min-width: 140px;
+}
+.roll-btn:hover:not(:disabled) { transform:translateY(-2px); box-shadow:6px 6px 12px var(--sh-d),-4px -4px 8px var(--sh-l),0 8px 22px rgba(102,126,234,.5); }
+.roll-btn:active:not(:disabled) { transform:translateY(1px); box-shadow:inset 3px 3px 6px rgba(0,0,0,.2); }
+.roll-btn:disabled { opacity:.35; cursor:not-allowed; transform:none; }
+
+.hint-blk { min-width:130px; text-align:center; font-size:.72rem; font-weight:600; color:var(--sub); line-height:1.6; }
+
+/* ── Toast ── */
+.toast {
+    position:fixed; top:22px; left:50%; transform:translateX(-50%);
+    background:var(--bg); padding:10px 26px; border-radius:14px;
+    box-shadow:8px 8px 16px var(--sh-d),-8px -8px 16px var(--sh-l);
+    font-size:.9rem; font-weight:700; color:var(--text);
+    z-index:999; pointer-events:none; white-space:nowrap;
+    animation:tin .3s ease;
+}
+@keyframes tin { from{opacity:0;top:8px}to{opacity:1;top:22px} }
+
+/* ── Win overlay ── */
+.win-overlay {
+    position:fixed; inset:0;
+    background:rgba(224,229,236,.92);
+    display:flex; align-items:center; justify-content:center;
+    z-index:1000;
+    backdrop-filter:blur(6px);
+}
+.win-card {
+    background:var(--bg); border-radius:28px; padding:50px 66px;
+    text-align:center;
+    box-shadow:18px 18px 36px var(--sh-d),-18px -18px 36px var(--sh-l);
+    animation:win-in .4s cubic-bezier(.34,1.56,.64,1);
+}
+@keyframes win-in { from{opacity:0;transform:scale(.6)}to{opacity:1;transform:scale(1)} }
+.win-trophy { font-size:5.5rem; }
+.win-title  { font-size:2.4rem; font-weight:900; margin:10px 0 6px; }
+.win-sub    { font-size:1rem; color:var(--sub); font-weight:600; margin-bottom:30px; }
+.pa-btn {
+    padding:14px 42px; font-size:1rem; font-weight:900;
+    color:#fff; background:linear-gradient(135deg,#667eea,#764ba2);
+    border-radius:14px; border:none; cursor:pointer;
+    box-shadow:0 8px 22px rgba(102,126,234,.45);
+    font-family:'Nunito',sans-serif; transition:all .2s;
+}
+.pa-btn:hover { transform:translateY(-2px); }

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8-Player Ludo Championship</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1><span>🎲</span> Ludo Championship <span>🎲</span></h1>
+
+<div class="game-area">
+    <!-- Left panel: P7, P0, P1, P2 -->
+    <div class="side-panel" id="lpanel">
+        <div class="pcard" id="pc-7" style="--c:#0077b6">
+            <div class="pdot" style="--c:#0077b6"></div>
+            <div class="pinfo"><div class="pname">Player 8</div><div class="ptokens" id="ptk-7">○ ○ ○ ○</div></div>
+            <div class="pscore" id="psc-7" style="--c:#0077b6">0</div>
+        </div>
+        <div class="pcard" id="pc-0" style="--c:#ef233c">
+            <div class="pdot" style="--c:#ef233c"></div>
+            <div class="pinfo"><div class="pname">Player 1</div><div class="ptokens" id="ptk-0">○ ○ ○ ○</div></div>
+            <div class="pscore" id="psc-0" style="--c:#ef233c">0</div>
+        </div>
+        <div class="pcard" id="pc-1" style="--c:#3a86ff">
+            <div class="pdot" style="--c:#3a86ff"></div>
+            <div class="pinfo"><div class="pname">Player 2</div><div class="ptokens" id="ptk-1">○ ○ ○ ○</div></div>
+            <div class="pscore" id="psc-1" style="--c:#3a86ff">0</div>
+        </div>
+        <div class="pcard" id="pc-2" style="--c:#06d6a0">
+            <div class="pdot" style="--c:#06d6a0"></div>
+            <div class="pinfo"><div class="pname">Player 3</div><div class="ptokens" id="ptk-2">○ ○ ○ ○</div></div>
+            <div class="pscore" id="psc-2" style="--c:#06d6a0">0</div>
+        </div>
+    </div>
+
+    <canvas id="board" width="672" height="672"></canvas>
+
+    <!-- Right panel: P3, P4, P5, P6 -->
+    <div class="side-panel" id="rpanel">
+        <div class="pcard" id="pc-3" style="--c:#ffbe0b">
+            <div class="pdot" style="--c:#ffbe0b"></div>
+            <div class="pinfo"><div class="pname">Player 4</div><div class="ptokens" id="ptk-3">○ ○ ○ ○</div></div>
+            <div class="pscore" id="psc-3" style="--c:#ffbe0b">0</div>
+        </div>
+        <div class="pcard" id="pc-4" style="--c:#8338ec">
+            <div class="pdot" style="--c:#8338ec"></div>
+            <div class="pinfo"><div class="pname">Player 5</div><div class="ptokens" id="ptk-4">○ ○ ○ ○</div></div>
+            <div class="pscore" id="psc-4" style="--c:#8338ec">0</div>
+        </div>
+        <div class="pcard" id="pc-5" style="--c:#fb5607">
+            <div class="pdot" style="--c:#fb5607"></div>
+            <div class="pinfo"><div class="pname">Player 6</div><div class="ptokens" id="ptk-5">○ ○ ○ ○</div></div>
+            <div class="pscore" id="psc-5" style="--c:#fb5607">0</div>
+        </div>
+        <div class="pcard" id="pc-6" style="--c:#ff006e">
+            <div class="pdot" style="--c:#ff006e"></div>
+            <div class="pinfo"><div class="pname">Player 7</div><div class="ptokens" id="ptk-6">○ ○ ○ ○</div></div>
+            <div class="pscore" id="psc-6" style="--c:#ff006e">0</div>
+        </div>
+    </div>
+</div>
+
+<div class="controls">
+    <div class="turn-blk">
+        <div class="turn-lbl">Current Turn</div>
+        <div class="turn-name" id="turn-name">Player 1</div>
+    </div>
+    <div class="dice-area">
+        <div class="dice" id="dice">🎲</div>
+        <button class="roll-btn" id="roll-btn">ROLL DICE</button>
+    </div>
+    <div class="hint-blk">Click a glowing<br>token to move it</div>
+</div>
+<script src="logic.js"></script>
+</body>
+</html>
