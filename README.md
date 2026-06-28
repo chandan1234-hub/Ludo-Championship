@@ -1,6 +1,7 @@
 # Ludo Championship
 
-![Uploading Ludo Championship.png…]()
+<img width="1424" height="923" alt="Ludo Championship" src="https://github.com/user-attachments/assets/b131c42a-f859-4884-86e1-8b62215f2117" />
+
 
 A polished, browser-based Ludo game built with HTML, CSS, and JavaScript. This project recreates the classic board game in a modern, colorful interface with animated dice, token movement, captures, and a celebratory win screen.
 
