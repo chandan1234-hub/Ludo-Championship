@@ -1,5 +1,7 @@
 # Ludo Championship
 
+![Uploading Ludo Championship.png…]()
+
 A polished, browser-based Ludo game built with HTML, CSS, and JavaScript. This project recreates the classic board game in a modern, colorful interface with animated dice, token movement, captures, and a celebratory win screen.
 
 ![Ludo Championship](https://img.shields.io/badge/Status-Playable-brightgreen) ![HTML](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white) ![CSS](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white) ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
