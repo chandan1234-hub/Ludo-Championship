@@ -32,11 +32,6 @@ A polished, browser-based Ludo game built with HTML, CSS, and JavaScript. This p
 3. Start the game by opening [index.html](index.html) in your browser.
 
 If you prefer a local server:
-
-```bash
-python -m http.server 8000
-```
-
 Then visit:
 
 ```text
