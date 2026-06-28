@@ -31,13 +31,6 @@ A polished, browser-based Ludo game built with HTML, CSS, and JavaScript. This p
 2. Open the project folder.
 3. Start the game by opening [index.html](index.html) in your browser.
 
-If you prefer a local server:
-Then visit:
-
-```text
-http://localhost:8000
-```
-
 ## 📁 Project Structure
 
 - [index.html](index.html) — Main HTML structure and game UI
